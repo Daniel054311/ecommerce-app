@@ -1,15 +1,25 @@
-<header>
-  <nav class="p-5 bg-white flex items-center justify-between shadow ">
-    <div>
-      <img src="../../assets/LOGO (1).png" alt="">
-    </div>
-    <button>Retail</button>
+<header class="py-5 px-12   bg-white md:flex md:items-center md:justify-between   shadow">
 
-    <div>
-      <form action="">
-        <input type="text">
-        <button></button>
+    <div >
+      <img class="" src="../../assets/LOGO (1).png" alt="">
+    </div>
+    <button class="bg-blueBg p-2 text-white rounded-md w-24 hover:bg-orange-500 duration-500 ">Retail</button>
+
+    <div class="border-solid border border-blueBorder w-96 px-5 py-1 rounded-md focus-within:border-orange-200">
+      <form action="" class="md:flex md:justify-between">
+        <input type="text" placeholder="Search"  class="w-full border-none outline-none text-gray-500">
+        <button class="border-l border-gray-300 pl-2 hover:text-orange-500 duration-200"><i class="fa fa-search text-blueColor hover:text-orange-500 duration-200" aria-hidden="true"></i></button>
       </form>
     </div>
-  </nav>
+
+    <div>
+      <i class="fa-solid fa-cart-shopping text-blueColor text-2xl hover:text-orange-500 duration-200"></i>
+    </div>
+    <ul>
+      <li >
+        <a class="text-gray-500" routerLink="">Login</a>
+      </li>
+    </ul>
+    <button class="bg-blueBg p-2 text-white rounded-md w-24 hover:bg-orange-500 duration-150 ">Sign Up</button>
+
 </header>
