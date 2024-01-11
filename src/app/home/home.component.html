@@ -1,0 +1,74 @@
+<!-- home.component.html -->
+
+<section class="bg-[#F6F6F6;]">
+  <main class="md:flex md:flex-col justify-center">
+    <div class="md:flex md:flex-col text-center px-14 py-5">
+      <h1 class="text-5xl font-[Damion]">Best and Affordable Clothing</h1>
+      <div class="py-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem
+        ipsum tenetur ratione et saepe neque dicta dolore aliquid in ex. Dolor?
+      </div>
+    </div>
+
+    <div class="w-full">
+      <div class="image-slider relative w-full h-96 overflow-hidden">
+        <button
+          (click)="prevSlide()"
+          class="absolute top-1/2 transform -translate-y-1/2 left-4 bg-black bg-opacity-0 text-white py-2 px-4 border-none cursor-pointer text-base hover:bg-opacity-70"
+        >
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <img
+          [src]="slides[currentSlideIndex]"
+          alt="Slide {{ currentSlideIndex + 1 }}"
+          class="w-full h-full object-cover transition-opacity duration-500 ease-in-out"
+        />
+        <button
+          (click)="nextSlide()"
+          class="absolute top-1/2 transform -translate-y-1/2 right-4 bg-black bg-opacity-0 text-white py-2 px-4 border-none cursor-pointer text-base hover:bg-opacity-70"
+        >
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+
+    <section>
+      <div class="md:flex flex-col justify-center gap-5 py-5" >
+
+        <div class="md:flex flex-row gap-5 px-10">
+          <div class="relative w-full flex items-center opacity-[0.5] hover:opacity-[1.0] duration-200 justify-center bg-white  rounded-md shadow-sm ">
+          <img class="w-auto" src="../../assets/pic2.png" alt="photo-2" />
+          <div class="absolute text-center top-[50%] items-center text-white text-2xl">Ready to Ship</div>
+        </div>
+
+        <div class="relative w-full flex items-center justify-center opacity-[0.5] hover:opacity-[1.0] duration-200 bg-white  rounded-md shadow-sm py-5 px-5">
+          <img class="auto" src="../../assets/pic3.png" alt="photo-3" />
+          <div class="absolute top-[50%] items-center text-white text-2xl">Build your own Jacket</div>
+        </div>
+        </div>
+
+        <div class="md:flex flex-row gap-5 px-10" >
+          <div class="relative w-full flex items-center justify-center opacity-[0.5] hover:opacity-[1.5] duration-200 bg-white rounded-md shadow-sm ">
+          <img class="auto" src="../../assets/pic4.png" alt="photo-2" />
+         <div class="absolute items-center top-[50%] text-white text-2xl">Stylish designs</div>
+        </div>
+        <div class="relative w-full flex items-center opacity-[0.5] hover:opacity-[1.5] duration-200 justify-center bg-white rounded-md shadow-sm py-5 px-5">
+          <img class="auto" src="../../assets/pic5.png" alt="photo-3" />
+          <div class="absolute items-center top-[50%] text-white text-2xl">Photo Gallery</div>
+        </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section>
+      <div class="md:flex md:flex-col text-center px-14 py-5">
+        <h1 class="font-bold text-2xl ">Lorem ipsum dolor.</h1>
+        <div class="py-3 text-center">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem <br>
+          ipsum tenetur ratione et saepe neque dicta dolore aliquid in ex. Dolor?
+        </div>
+      </div>
+    </section>
+  </main>
+</section>
