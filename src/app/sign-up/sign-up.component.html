@@ -1,0 +1,130 @@
+<section class="flex justify-center items-center py-7">
+  <div class="flex flex-col justify-center items-center w-full">
+    <h1 class="font-bold text-2xl">Create Account</h1>
+    <form
+      [formGroup]="signUp"
+      class="shadow-sm px-5 py-5 w-auto"
+      action=""
+    >
+      <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
+        <label for="firstName" class="text-gray-500">First Name</label>
+        <input
+          id="firstName"
+          formControlName="firstName"
+          class="w-full text-gray-400 rounded-md border focus:border-orange-200 outline-none px-4 py-2 "
+          type="text"
+          placeholder="Enter your name"
+          required
+        />
+        @if (  isFirstName ) {
+          <div class="text-red-300">Name is required!</div>
+          }
+          @if (isFirstNameInvalid) {
+            <div class="text-green-400">Name can not contain special characters or numbers</div>
+          }
+      </div>
+
+      <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
+        <label for="secondName" class="text-gray-500">Second Name</label>
+        <input
+          id="secondName"
+          formControlName="secondName"
+          class="w-full text-gray-400 rounded-md border focus:border-orange-200 outline-none px-4 py-2"
+          type="text"
+          placeholder="Enter your second name"
+        />
+        @if (isSecondName) {
+        <div class="text-red-300">Field is required</div>
+        }
+        @if (isSecondNameInvalid) {
+          <div class="text-green-400">Name can not contain special characters or numbers</div>
+        }
+      </div>
+
+      <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
+        <label for="email" class="text-gray-500">Email</label>
+        <input
+          id="email"
+          formControlName="email"
+          class="text-gray-400 w-full rounded-md border focus:border-orange-200 outline-none px-4 py-2"
+          type="email"
+          placeholder="Enter your email"
+          required="email"
+        />
+        @if (isEmail) {
+          <div class="text-red-300">Email is required</div>
+        }
+        @if (isEmailInvalid) {
+          <div class="text-green-400">Enter a valid email</div>
+        }
+      </div>
+
+      <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
+        <label for="password" class="text-gray-500">Password</label>
+        <input
+          id="password"
+          formControlName="password"
+          class="text-gray-400 w-full rounded-md border focus:border-orange-200 outline-none px-4 py-2"
+          type="{{isPasswordVisible ? 'text' : 'password'}}"
+          placeholder="*******************"
+        />
+        <span
+        (click)="togglePasswordVisibility('password')"
+        class="text-blueColor absolute top-3/4 transform -translate-y-1/2 right-4 cursor-pointer"
+      >
+      @if (!isPasswordVisible) {
+        <i class="fa-solid fa-eye" ></i>
+      }
+      @if (isPasswordVisible) {
+        <i class="fa-solid fa-eye-slash" ></i>
+      }
+      </span>
+
+        @if (isPassword) {
+          <div class="text-red-300">Password is required</div>
+        }
+      </div>
+
+      <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
+        <label for="confirmPassword" class="text-gray-500">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          formControlName="confirmPassword"
+          class="text-gray-400 w-full rounded-md border focus:border-orange-200 outline-none px-4 py-2"
+          type="{{isConfirmPasswordVisible ? 'text' : 'password'}}"
+          placeholder="**************"
+        />
+        <span
+        (click)="togglePasswordVisibility('confirmPassword')"
+      class="text-blueColor absolute top-3/4 transform -translate-y-1/2 right-4 cursor-pointer"
+        >
+          @if (!isConfirmPasswordVisible) {
+            <i class="fa-solid fa-eye" ></i>
+          }
+          @if (isConfirmPasswordVisible) {
+            <i class="fa-solid fa-eye-slash" ></i>
+          }
+        </span>
+
+        @if (isConfirmPassword) {
+          <div class="text-red-300">Field is required</div>
+        }
+        @if (isPasswordMismatch) {
+          <div class="text-red-300" >Password must be the same</div>
+        }
+      </div>
+
+      <div class="flex flex-row gap-4 items-center justify-between">
+        <button
+          class="rounded-md bg-blueBg hover:bg-orange-500 duration-150 py-2 px-7 text-white"
+          type="submit"
+          (click)="onSubmit()"
+
+        >
+          Submit
+        </button>
+        <p>Already have an Account <a class="text-red-400 cursor-pointer" routerLink="/app-login">Login</a></p>
+      </div>
+    </form>
+  </div>
+</section>

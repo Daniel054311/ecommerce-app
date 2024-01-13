@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @Component({
@@ -9,7 +10,7 @@ import { HeaderComponent } from "./header/header.component";
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.css',
-    imports: [HeaderComponent,RouterOutlet,CommonModule,]
+    imports: [HeaderComponent,RouterOutlet,CommonModule,ReactiveFormsModule]
 })
 export class AppComponent {
   title = 'ecommerce-app';
