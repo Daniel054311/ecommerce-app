@@ -1,4 +1,4 @@
-<header class="py-3 px-4 md:px-12 bg-white flex items-center justify-between">
+<header class=" py-3 px-4 md:px-12 bg-white flex items-center justify-between">
   <div>
     <ul class="font-bold text-xl text-blueColor hover:text-orange-500">
       <li><a routerLink="">LOGO</a></li>
@@ -20,7 +20,7 @@
     </div>
 
     <div class="relative flex items-center">
-      <span class="absolute left-4 bottom-5 inline-block w-4 h-4 bg-red-500 rounded-full text-white text-center">1</span>
+      <span class="absolute left-4 bottom-5 w-6 h-6 bg-red-500 rounded-full text-white text-center flex items-center justify-center text-xs font-bold">{{ getTotalCartCount() }}</span>
       <i class="fa fa-shopping-cart text-blueColor text-2xl hover:text-orange-500 duration-200 cursor-pointer" id="cartIcon"></i>
     </div>
 
@@ -29,9 +29,11 @@
         <a class="text-gray-500 hover:text-orange-500 duration-200" routerLink="/app-login" routerLinkActive="active">Login</a>
       </li>
 
-      <div *ngIf="userFirstName">
-        <span class="text-gray-500 hover:text-orange-500 duration-200">{{ userFirstName }}</span>
-      </div>
+      @if (userFirstName) {
+        <div>
+          <span class="text-gray-500 hover:text-orange-500 duration-200">{{ userFirstName }}</span>
+        </div>
+      }
 
       <li>
         <button (click)="routeToSignUp()" class="bg-blueBg p-2 text-white rounded-full md:w-24 hover:bg-orange-500 duration-150">Sign Up</button>
@@ -45,18 +47,20 @@
     </button>
   </div>
 
-  <div *ngIf="isMobileMenuOpen" class="fixed top-0 left-0 w-full h-full bg-white">
-    <div class="flex justify-end p-4">
-      <button (click)="closeMobileMenu()">
-        <i class="fa fa-times text-2xl text-blueColor hover:text-orange-500"></i>
-      </button>
+  @if (isMobileMenuOpen) {
+    <div class="fixed top-0 left-0 w-full h-full bg-white">
+      <div class="flex justify-end p-4">
+        <button (click)="closeMobileMenu()">
+          <i class="fa fa-times text-2xl text-blueColor hover:text-orange-500"></i>
+        </button>
+      </div>
+      <div class="flex flex-col items-center space-y-4">
+        <a routerLink="/app-retail" class="text-blueColor hover:text-orange-500 duration-200">Retail</a>
+        <a routerLink="" class="text-gray-500 hover:text-orange-500 duration-200">Login</a>
+        <button (click)="routeToSignUp()" class="bg-blueBg p-2 text-white rounded-full md:w-24 hover:bg-orange-500 duration-150">Sign Up</button>
+      </div>
     </div>
-
-    <div class="flex flex-col items-center space-y-4">
-      <a routerLink="/app-retail" class="text-blueColor hover:text-orange-500 duration-200">Retail</a>
-      <a routerLink="" class="text-gray-500 hover:text-orange-500 duration-200">Login</a>
-      <button (click)="routeToSignUp()" class="bg-blueBg p-2 text-white rounded-full md:w-24 hover:bg-orange-500 duration-150">Sign Up</button>
-    </div>
-  </div>
+  }
 </header>
-<app-navbar></app-navbar>
+
+

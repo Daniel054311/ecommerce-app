@@ -1,392 +1,42 @@
-<section class="bg-[#F6F6F6]">
-  <main class="flex flex-col gap-5 justify-center items-center px-5 py-5">
-    <div class="flex md:flex-row flex-col gap-5 justify-center items-center">
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail1.png"
-          alt="photo-2"
-        />
+<app-navbar></app-navbar>
+<section class="bg-[#F6F6F6] relative">
+  <main class="flex flex-col items-center px-5 py-5">
 
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-5 justify-center items-center">
+      @for (product of productData; track product) {
+        <div class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm">
+          <img src="{{ product.imageUrl }}" alt="{{ product.name }}">
+          <div class="flex flex-col gap-2">
+            <h2 class="text-blueColor">{{ product.name | uppercase }}</h2>
+            <p>{{ product.description }}</p>
+            <h1 class="font-bold">GH₵ {{ product.price }}</h1>
+            <div>
+              <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
+              <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
+              <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
+              <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
+              <i class="fa-solid fa-star text-gray-300"></i>
+            </div>
+            @if (product.quantity !== product.cartCount! || cartCountProductId !== product.id) {
+              <p>{{ product.quantity }} Available</p>
+            }@else {
+              <p class="text-red-400">Out of Stock</p>
+            }
           </div>
-          <p>2 Available</p>
+          @if (totalCount < 0  || cartCountProductId !== product.id) {
+            <button (click)="addToCart(product)" class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
+          }@else {
+            <div class="flex flex-row items-center justify-center gap-5">
+              <button (click)="removeFromCart(product)"  class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">-</button>
+              <p>In Cart: {{ product.cartCount}}</p>
+              <button (click)="addToCart(product)" [disabled]="product.quantity === product.cartCount! || cartCountProductId !== product.id"  [class.active]="signal && cartCountProductId === product.id" class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">+</button>
+            </div>
+          }
         </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
+      }
 
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail2.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail3.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail4.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg hover:bg-orange-500 duration-150 text-white py-1 px-3">Add to Cart</button>
-      </div>
     </div>
 
-   <section>
-    <div class="flex md:flex-row flex-col gap-5 justify-center items-center">
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail5.png"
-          alt="photo-2"
-        />
-
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail6.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail7.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail8.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg hover:bg-orange-500 duration-150 text-white py-1 px-3">Add to Cart</button>
-      </div>
-    </div>
-  </section>
-
-
-  <section>
-    <div class="flex md:flex-row flex-col gap-5 justify-center items-center">
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail9.png"
-          alt="photo-2"
-        />
-
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail10.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail11.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail13.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg hover:bg-orange-500 duration-150 text-white py-1 px-3">Add to Cart</button>
-      </div>
-    </div>
-  </section>
-
-
-  <section>
-    <div class="flex md:flex-row flex-col gap-5 justify-center items-center">
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail14.png"
-          alt="photo-2"
-        />
-
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail15.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail16.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-      </div>
-
-      <div
-        class="relative gap-4 py-4 px-4 w-full flex flex-col items-center bg-white rounded-md shadow-sm"
-      >
-        <img
-          class="w-96 relative"
-          src="../../assets/retail7.png"
-          alt="photo-2"
-        />
-        <div class="flex flex-col gap-2">
-          <div class="text-black">Gray leather Jacket with polished cotton</div>
-          <h1 class="font-bold">GH₵ 2,093.00</h1>
-          <div>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
-            <i class="fa-solid fa-star text-gray-300"></i>
-          </div>
-          <p>2 Available</p>
-        </div>
-        <button class="bg-blueBg hover:bg-orange-500 duration-150 text-white py-1 px-3">Add to Cart</button>
-      </div>
-    </div>
-  </section>
   </main>
 </section>
 <app-footer></app-footer>

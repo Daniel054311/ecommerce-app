@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, Input } from '@angular/core';
 import { interval, takeUntil } from 'rxjs';
 import { FooterComponent } from "../footer/footer.component";
@@ -9,7 +9,7 @@ import { FooterComponent } from "../footer/footer.component";
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [CommonModule, FooterComponent]
+    imports: [FooterComponent]
 })
 export class HomeComponent {
   @Input() slides: string[] = [
