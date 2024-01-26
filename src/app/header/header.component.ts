@@ -4,18 +4,21 @@ import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { UserService } from '../user.service';
 import { ProductsService } from '../products.service';
+import { CommonModule, NgOptimizedImage } from '@angular/common'
 
 @Component({
     selector: 'app-header',
     standalone: true,
     templateUrl: './header.component.html',
     styleUrl: './header.component.css',
-    imports: [RouterLinkActive, RouterLink, ReactiveFormsModule, NavbarComponent]
+    imports: [CommonModule,RouterLinkActive, RouterLink, ReactiveFormsModule, NavbarComponent,NgOptimizedImage]
 })
 export class HeaderComponent implements OnInit {
   expression: any;
   isMobileMenuOpen = false;
   userFirstName: string | null;
+  userProfileUrl: string | null
+
 
   constructor(
     private userService: UserService,
@@ -23,6 +26,8 @@ export class HeaderComponent implements OnInit {
     private router: Router
   ) {
     this.userFirstName = this.userService.getFirstName();
+    this.userProfileUrl = this.userService.getProfileUrl();
+
   }
 
   ngOnInit(): void {

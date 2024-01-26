@@ -27,8 +27,9 @@ export class SignUpComponent implements OnInit {
       firstName: ['', [Validators.required, Validators.minLength(4)]],
       secondName: ['', [Validators.required, Validators.minLength(4)]],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(4)]],
       confirmPassword: ['', [Validators.required]],
+      profile:  [''],
     });
   }
 
@@ -38,12 +39,11 @@ export class SignUpComponent implements OnInit {
   isPassword = false;
   isConfirmPassword = false;
   isPasswordMismatch = false;
-
   isPasswordVisible = false;
   isConfirmPasswordVisible = false;
-
   isFirstNameInvalid = false;
   isSecondNameInvalid = false;
+  isPasswordLength = false;
 
   ngOnInit(): void {}
 
@@ -70,6 +70,10 @@ export class SignUpComponent implements OnInit {
     this.isPassword = this.signUp.get('password')?.value === '';
     this.isConfirmPassword = this.signUp.get('confirmPassword')?.value === '';
 
+
+    const passwordLength = this.signUp.get('password')?.value.length >= 4 ;
+    this.isPasswordLength = !passwordLength ;
+
     // TO COMPARE THE PASSWORD
     const passwordMatch =
       this.signUp.get('password')?.value ===
@@ -84,7 +88,9 @@ export class SignUpComponent implements OnInit {
       this.isPassword ||
       this.isConfirmPassword ||
       this.isPasswordMismatch ||
-      this.isEmailInvalid
+      this.isEmailInvalid ||
+      this.isPasswordLength
+
     ) {
     } else {
       // Save user data to local storage
@@ -92,12 +98,22 @@ export class SignUpComponent implements OnInit {
         firstName: this.signUp.get('firstName')?.value,
         secondName: this.signUp.get('secondName')?.value,
         email: this.signUp.get('email')?.value,
-        password: this.signUp.get('password')?.value, // Note: You should hash the password before saving it
+        password: this.signUp.get('password')?.value,
+        profile:this.signUp.get('profile')?.value,
+       // Note: You should hash the password before saving it
       };
+
+      const profileImageControl = this.signUp.get('profile');
+    if (profileImageControl && profileImageControl.value) {
+      const imageUrl = profileImageControl.value; // Assuming the value is the image URL
+      this.userService.updateProfileUrl(imageUrl);
+    }
 
       this.userService.saveUser(user);
 
       this.router.navigate(['/app-retail']);
     }
   }
+
+
 }

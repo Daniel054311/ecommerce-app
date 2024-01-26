@@ -83,6 +83,9 @@
         @if (isPassword) {
           <div class="text-red-300">Password is required</div>
         }
+        @if (isPasswordLength) {
+          <div class="text-red-300">Password must be at least four characters long.</div>
+        }
       </div>
 
       <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
@@ -112,6 +115,11 @@
         @if (isPasswordMismatch) {
           <div class="text-red-300" >Password must be the same</div>
         }
+      </div>
+
+      <div class="flex flex-col gap-4 relative md:w-[600px] py-2">
+        <label class="text-gray-500" for="profile">Upload your Photo</label>
+        <input id="profile"   type="file"  formControlName="profile">
       </div>
 
       <div class="flex flex-row gap-4 items-center justify-between">
