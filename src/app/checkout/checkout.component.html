@@ -1,0 +1,32 @@
+<app-navbar></app-navbar>
+<section class="bg-[#F6F6F6]">
+    <div class=" flex flex-col justify-center gap-4 px-20 ">
+      <div class="font-bold text-2xl">Cart ({{getTotalCartCount()}})</div>
+  @for (product of productsInCart; track product) {
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 py4">
+  <div class="bg-white py-4 px-4 shadow-sm"><img [src]="product.imageUrl" [alt]="product.name"></div>
+  <div class="bg-white py-4 px-7 shadow-sm flex flex-col gap-4 justify-center ">
+    <p class="text-2xl">{{product.description}}</p>
+    <div class="flex flex-row gap-4"><i class="fa-solid fa-store"></i> <p>Seller: James cottage</p></div>
+<p>{{product.quantity}} Available</p>
+  </div>
+
+  <div class="bg-white text-2xl font-bold py-4 px-4 shadow-sm flex items-center justify-center">GH₵ {{product.price * (product.cartCount!)}}</div>
+
+    <div class="bg-white py-4 px-4 shadow-sm flex items-center justify-center">
+      <button (click)="removeFromCart(product)"  class="bg-[#F6F6F6] text-2xl px-5 py-2 font-bold shadow-md">-</button>
+  <button class="bg-white text-2xl px-8 py-2 font-bold shadow-md"> {{ product.cartCount}}</button>
+  <button (click)="addToCart(product)"  [disabled]="product.cartCount === product.quantity"  [class.active]="signal && cartCountProductId === product.id" class="bg-[#F6F6F6] text-2xl px-5 py-2 font-bold shadow-md">+</button>
+  </div>
+
+  <div class="bg-white py-4 px-4 shadow-sm flex items-center justify-center">
+  <div class="flex flex-col gap-4 ">
+    <button  class="bg-[#F6F6F6] text-2xl px-8 py-2 font-bold shadow-md">Remove</button>
+    <button    class="bg-blueBg text-2xl px-8 text-white py-2 font-bold shadow-md">Buy Now</button>
+  </div>
+</div>
+</div>
+  }
+</div>
+</section>
+

@@ -11,8 +11,8 @@ export class UserService {
   private products: Product[] = [];
   public productData = CLOTHING_PRODUCTS;
   private userKey = 'user';
-  private userImageUrlKey = 'userImageUrl';
-  private defaultUserImageUrl = '../assets/user.jpg';
+  public profileImageUrlKey = 'profileImageUrl';
+  public defaultUserImageUrl = '../assets/user.jpg';
 
     // // Initialize product data if not present in local storage
     // private initializeProducts(): void {
@@ -61,12 +61,23 @@ export class UserService {
   }
 
   getProfileUrl(): string | null {
-    return this.defaultUserImageUrl;
+    if (typeof localStorage !== 'undefined') {
+      const imageUrl = localStorage.getItem(this.profileImageUrlKey);
+      return imageUrl ? imageUrl : this.defaultUserImageUrl;
+    } else {
+      return this.defaultUserImageUrl; // Handle the case when localStorage is not available
+    }
   }
 
-  updateProfileUrl(profileImageUrl: string): void {
+  updateDefaultUserImageUrl(imageUrl: string): void {
+    this.defaultUserImageUrl = imageUrl;
+  }
+
+  updateProfileUrl(imageUrl: string): void {
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(this.userImageUrlKey, profileImageUrl);
+      localStorage.setItem(this.profileImageUrlKey, imageUrl);
+    } else {
+      // Handle the case when localStorage is not available
     }
   }
 

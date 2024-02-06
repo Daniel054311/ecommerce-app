@@ -6,6 +6,7 @@ import { UserService } from '../user.service';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { CLOTHING_PRODUCTS } from "../../db-data";
 import { ProductsService } from '../products.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-retail',
@@ -16,7 +17,7 @@ import { ProductsService } from '../products.service';
 })
 export class RetailComponent implements OnInit {
 
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService,private router:Router) { }
 
   productData: Product[] = [];
   cartCountProductId: number | null = null; // Property to track the ID of the product in the cart
@@ -29,7 +30,6 @@ export class RetailComponent implements OnInit {
     if(product.quantity >= product.cartCount! || this.cartCountProductId !== product.id){
       this.isTotalCount = true;
     }
-
     // Update cartCountProductId to track the specific product in the cart
     this.cartCountProductId = product.id;
     if (product.cartCount === undefined) {
@@ -37,7 +37,7 @@ export class RetailComponent implements OnInit {
     } else {
       product.cartCount++;
     }
-
+    this.router.navigate(["/app-cart"]);
       // this.productsService.saveProducts([...this.products]);// Make sure this.products is defined
   }
 

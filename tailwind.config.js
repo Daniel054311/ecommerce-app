@@ -11,6 +11,9 @@ module.exports = {
       },
       colors: {
         blueColor: "#1F71BC"
+      },
+      fontFamily: {
+        damion: "Damion"
       }
     },
   },

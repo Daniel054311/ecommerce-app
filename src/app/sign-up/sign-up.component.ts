@@ -107,6 +107,10 @@ export class SignUpComponent implements OnInit {
     if (profileImageControl && profileImageControl.value) {
       const imageUrl = profileImageControl.value; // Assuming the value is the image URL
       this.userService.updateProfileUrl(imageUrl);
+      this.userService.updateDefaultUserImageUrl(imageUrl); // Update defaultUserImageUrl
+    } else {
+      // If no image is uploaded, save the default image URL
+      this.userService.updateProfileUrl(this.userService.defaultUserImageUrl);
     }
 
       this.userService.saveUser(user);
