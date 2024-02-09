@@ -1,0 +1,70 @@
+
+<section class="bg-[#F6F6F6]">
+    <div class=" flex flex-col justify-center gap-4 px-10 py-4 ">
+      <div class="flex flex-row gap-4 justify-center px-4 text-center bg-white py-2 ">
+       <div class="flex flex-col justify-center items-center"> <span class=" w-10 h-10 bg-blueBg rounded-full text-white text-center flex items-center justify-center text-xs font-bold">1</span>
+        <p class="text-blueColor font-bold">Checkout</p>
+      </div>
+      <div class="w-20 h-1 bg-gray-300 top-5 rounded-md relative">
+        <div class="absolute top-0 left-0 h-full bg-blueBg" style="width: 50%;"></div>
+      </div>
+        <div class="flex flex-col justify-center items-center"><span class="w-10 h-10 bg-[#9EB1C3] rounded-full text-white text-center flex items-center justify-center text-xs font-bold">2</span>
+          <p class="text-gray-300">Pay</p>
+        </div>
+
+        <div class="w-20 h-1 bg-gray-300 top-5 rounded-md relative">
+        </div>
+        <div class="flex flex-col justify-center items-center"><span class="w-10 h-10 bg-[#9EB1C3] rounded-full text-white text-center flex items-center justify-center text-xs font-bold">3</span>
+          <p class="text-gray-300">Delivery</p>
+        </div>
+      </div>
+      <p class="font-bold text-2xl">Shipping Address</p>
+
+
+        <div class="bg-white flex flex-col md:flex-row relative px-4 py-2 ">
+        <div >
+      <div class="flex flex-row justify-between items-center py-10">
+        <div class="font-bold text-2xl">Robert Elinam</div>
+         <p class="text-gray-400">0240 000 000</p></div>
+      <p class="text-gray-400">Western Region Takoradi Metro Takoradi 17/8 old
+        john saba road .
+      </p>
+      <p class="text-gray-400">Self-pick: Takoradi office</p>
+        </div>
+        <div><button class="bg-blueBg text-white py-2 px-9 md:absolute md:right-4 ">Change</button></div>
+
+      </div>
+
+  @for (product of productsInCart; track product) {
+<div class="grid grid-cols-1 md:grid-cols-5 gap-4 py4">
+  <div class="bg-white py-4 px-4 shadow-sm flex items-center justify-center"><img class="w-full" [src]="product.imageUrl" [alt]="product.name"></div>
+  <div class="bg-white py-4 px-7 shadow-sm flex flex-col gap-4 justify-center ">
+    <p class="text-2xl">{{product.description}}</p>
+    <div class="flex flex-row gap-4"><i class="fa-solid fa-store"></i> <p class="text-gray-400">Seller: James cottage</p></div>
+<p class="text-gray-400">{{product.quantity}} Available</p>
+  </div>
+
+  <div class="bg-white text-2xl font-bold py-4 px-4 shadow-sm flex text-center items-center justify-center">GH₵ {{product.price * (product.cartCount!)}}</div>
+    <div class="bg-white py-4 px-4 shadow-sm flex items-center justify-center">
+      <button disabled  class="bg-[#F6F6F6] text-gray-200 text-2xl px-5 py-2 font-bold shadow-md">-</button>
+  <button disabled class="bg-white text-2xl px-8 py-2 font-bold shadow-md"> {{ product.cartCount}}</button>
+  <button disabled class="bg-[#F6F6F6] text-gray-300 text-2xl px-5 py-2 font-bold shadow-md">+</button>
+  </div>
+
+  <div class="bg-white py-4 px-4 shadow-sm flex items-center justify-center">
+  <div class="flex flex-col gap-4 ">
+    <button  class="bg-[#F6F6F6] text-2xl px-8 py-2 font-bold shadow-md">Remove</button>
+  </div>
+</div>
+</div>
+  }
+  @for (product of productsInCart; track product) {
+<div class="flex md:flex-row flex-col py-5">
+  <button disabled   class="bg-white flex items-center justify-center md:items-center  px-4 text-2xl w-full py-2 font-bold shadow-md">GH₵ {{product.price * (product.cartCount!)}}</button>
+  <button (click)="  routeToPayment()" class="bg-blueBg text-white text-2xl md:w-4/5 w-full py-2 font-bold shadow-md">Confirm order</button>
+</div >
+  }
+</div>
+</section>
+
+

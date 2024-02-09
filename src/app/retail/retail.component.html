@@ -1,3 +1,4 @@
+
 <app-navbar></app-navbar>
 <section class="bg-[#F6F6F6] relative">
   <main class="flex flex-col items-center px-5 py-5">
@@ -23,15 +24,15 @@
               <p class="text-red-400">Out of Stock</p>
             }
           </div>
-          @if (totalCount < 0  || cartCountProductId !== product.id) {
-            <button (click)="addToCart(product)" class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">Add to Cart</button>
-          }@else {
-            <div class="flex flex-row items-center justify-center gap-5">
+          <!-- @if (totalCount < 0  || cartCountProductId !== product.id) { -->
+            <button (click)="addToCart(product)" class="bg-blueBg text-white py-1 w-4/5 hover:bg-orange-500 duration-150">Add to Cart</button>
+          <!-- }@else { -->
+            <!-- <div class="flex flex-row items-center justify-center gap-5">
               <button (click)="removeFromCart(product)"  class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">-</button>
               <p>In Cart: {{ product.cartCount}}</p>
               <button (click)="addToCart(product)" [disabled]="product.quantity === product.cartCount! || cartCountProductId !== product.id"  [class.active]="signal && cartCountProductId === product.id" class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">+</button>
             </div>
-          }
+          } -->
         </div>
       }
     </div>

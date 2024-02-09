@@ -1,7 +1,7 @@
 <section class="">
   <div class="px-10 text-2xl font-bold ">Total Cart ({{ getTotalCartCount() }})</div>
 
-  <main class="grid py-4 px-10 gap-10  grid-cols-1 md:grid-cols-2 bg-[#F6F6F6]   ">
+  <main class="grid  px-10 gap-10  grid-cols-1 md:grid-cols-2 bg-[#F6F6F6]   ">
   <div class="grid grid-cols-1 md:grid-cols-1 gap-5 justify-center items-center">
   @for (product of productsInCart; track product) {
   <div class="relative gap-4 py-4 px-4 w-full flex flex-col  bg-white rounded-md  ">
@@ -28,8 +28,8 @@
     <i class="fa-solid fa-star text-blueColor hover:text-orange-500 duration-150"></i>
     <i class="fa-solid fa-star text-gray-200 "></i>
   </div>
-  <p>{{product.quantity}} Available</p>
-  <div>Seller: James cottage</div>
+  <p class="text-gray-400">{{product.quantity}} Available</p>
+  <div class="text-gray-400">Seller: James cottage</div>
 </div>
 <div class="flex justify-center items-center flex-col gap-2">
 <button class="bg-[#F6F6F6] py-2 w-4/5 font-[Roboto] text-2xl font-bold shadow-md">GH₵ {{ product.price * (product.cartCount)! }}</button>
@@ -52,7 +52,7 @@
 </div>
   <div class="flex flex-row items-center justify-center">
   <button (click)="removeFromCart(product)"  class="bg-[#F6F6F6] text-2xl px-8 py-2 font-bold shadow-md">-</button>
-  <button class="bg-white text-2xl px-8 py-2 font-bold shadow-md"> {{ product.cartCount}}</button>
+  <button disabled class="bg-white text-2xl px-8 py-2 font-bold shadow-md"> {{ product.cartCount}}</button>
   <button (click)="addToCart(product)"  [disabled]="product.cartCount === product.quantity"  [class.active]="signal && cartCountProductId === product.id" class="bg-[#F6F6F6] text-2xl px-8 py-2 font-bold shadow-md">+</button>
 </div>
   <!-- <button (click)="addToCart(product)" [disabled]="product.quantity === product.cartCount! || cartCountProductId !== product.id"  [class.active]="signal && cartCountProductId === product.id" class="bg-blueBg text-white py-1 px-3 hover:bg-orange-500 duration-150">+</button> -->

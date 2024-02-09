@@ -4,13 +4,14 @@ import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
 import { NavbarComponent } from "../navbar/navbar.component";
 import { FooterComponent } from "../footer/footer.component";
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
     selector: 'app-checkout',
     standalone: true,
     templateUrl: './checkout.component.html',
     styleUrl: './checkout.component.css',
-    imports: [NavbarComponent, FooterComponent]
+    imports: [NavbarComponent, FooterComponent, HeaderComponent]
 })
 export class CheckoutComponent implements OnInit{
   productsInCart: Product[] = [];
@@ -63,6 +64,9 @@ export class CheckoutComponent implements OnInit{
 
   routeToRetail() {
     this.router.navigate(["/app-retail"])
+  }
+  routeToConfirm() {
+    this.router.navigate(['app-confirm'])
   }
 
 

@@ -5,6 +5,8 @@ import { SignUpComponent } from './sign-up/sign-up.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckoutComponent } from './checkout/checkout.component';
+import { ConfirmComponent } from './confirm/confirm.component';
+import { PaymentComponent } from './payment/payment.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -12,6 +14,8 @@ export const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'app-login', component: LoginComponent },
   { path: 'app-cart', component: CartComponent },
-  {path:"app-checkout",component:CheckoutComponent}
+  { path: "app-checkout", component: CheckoutComponent },
+  { path: "app-confirm", component: ConfirmComponent },
+  {path:"app-payment",component:PaymentComponent}
 
 ];

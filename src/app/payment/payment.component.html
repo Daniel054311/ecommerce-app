@@ -1,0 +1,105 @@
+<section>
+  <main class="flex flex-col gap-4 py-4 px-4 justify-center ">
+    <div
+      class="flex flex-row gap-4 justify-center px-4 text-center bg-white py-2"
+    >
+      <div class="flex flex-col justify-center items-center">
+        <span
+          class="w-10 h-10 bg-blueBg rounded-full text-white text-center flex items-center justify-center text-xs font-bold"
+          >1</span
+        >
+        <p class="text-blueColor font-bold">Checkout</p>
+      </div>
+      <div class="w-20 h-1 bg-gray-300 top-5 rounded-md relative">
+        <div
+          class="absolute top-0 left-0 h-full bg-blueBg"
+          style="width: 100%"
+        ></div>
+      </div>
+      <div class="flex flex-col justify-center items-center">
+        <span
+          class="w-10 h-10 bg-blueBg rounded-full text-white text-center flex items-center justify-center text-xs font-bold"
+          >2</span
+        >
+        <p class=" text-blueColor font-bold">Pay</p>
+      </div>
+
+      <div class="w-20 h-1 bg-gray-300 top-5 rounded-md relative">
+        <div
+          class="absolute top-0 left-0 h-full bg-blueBg"
+          style="width: 50%"
+        ></div></div>
+
+
+      <div class="flex flex-col justify-center items-center">
+        <span
+          class="w-10 h-10 bg-[#9EB1C3] rounded-full text-white text-center flex items-center justify-center text-xs font-bold"
+          >3</span
+        >
+        <p class="text-gray-300">Delivery</p>
+      </div>
+    </div>
+
+    <p class="font-bold">Payment Method</p>
+
+    <div class="flex flex-col  justify-center">
+      <div class="px-4 flex flex-row gap-10 ">
+        <button class="bg-white py-2 px-10 shadow-md flex items-center justify-center gap-2"><i class="text-blueColor text-2xl  fa fa-credit-card"></i><span class="text-blueColor ">Visa</span></button>
+        <button class="flex items-center justify-center gap-2"><i class=" text-gray-300  fa fa-mobile-phone"></i> <span class="text-gray-300 ">Mobile money</span></button>
+      </div>
+      <div class="flex justify-between gap-3   items-center">
+        <div class="w-4/6 grid grid-cols-2 py-5 gap-1 bg-white shadow-md">
+          <div class="flex flex-col gap-4 py-4 px-4">
+            <div class="flex flex-col px-2 justify-center shadow-md">
+              <label class="text-gray-400" for="bank">Bank</label>
+              <input class="py-2 outline-none " id="bank" type="text" placeholder="Fidelity Bank" />
+            </div>
+            <div class="flex flex-col px-2 justify-center shadow-md">
+              <label class="text-gray-400" for="branch">Branch</label>
+              <input class="py-2 outline-none " id="branch" type="text" placeholder="Central Capital" />
+            </div>
+            <div class="flex flex-col px-2 justify-center shadow-md">
+              <label class="text-gray-400" for="cvc">CVC</label>
+              <input class="py-2 outline-none " id="cvc" type="text" placeholder="123" />
+            </div>
+          </div>
+
+          <div class="flex flex-col gap-4 py-4 px-4">
+            <div class="flex flex-col px-2 justify-center shadow-md">
+              <label class="text-gray-400" for="bank">Account Holder</label>
+              <input class="py-2 outline-none " id="bank" type="text" placeholder="Robert Elinam" />
+            </div>
+            <div class="flex flex-col px-2 justify-center shadow-md">
+              <label class="text-gray-400" for="branch">Card Number</label>
+              <input class="py-2 outline-none" id="branch" type="text" placeholder="1234567891234" />
+            </div>
+            <div class="flex flex-col px-2 justify-center shadow-md ">
+              <label class="text-gray-400" for="cvc">Expiry Date</label>
+              <input class="py-2 outline-none " id="cvc" type="text" placeholder="07/23" />
+            </div>
+          </div>
+
+        </div>
+
+        <div class="w-1/3 bg-white flex flex-col py-5 px-5 shadow-md">
+          <p class="font-bold text-gray-500">Summary</p>
+          <div class="grid grid-cols-2 border-b border-gray-400">
+            <p class="text-gray-300">Item</p><p class="text-gray-500">1</p>
+          </div>
+          <div class="grid grid-cols-2 border-b border-gray-400">
+            <p class="text-gray-300">Payment Method</p><p class="text-gray-500">Visa</p>
+          </div>
+          <div class="flex justify-between">
+            <p class="text-gray-300">Amount</p><p >amount</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+<div>
+ <button class="bg-blueBg text-white ">Pay</button>
+</div>
+
+  </main>
+</section>

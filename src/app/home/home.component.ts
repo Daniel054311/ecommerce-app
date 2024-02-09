@@ -2,6 +2,7 @@
 import { Component, Input } from '@angular/core';
 import { interval, takeUntil } from 'rxjs';
 import { FooterComponent } from "../footer/footer.component";
+import { HeaderComponent } from "../header/header.component";
 
 
 @Component({
@@ -9,7 +10,7 @@ import { FooterComponent } from "../footer/footer.component";
     standalone: true,
     templateUrl: './home.component.html',
     styleUrl: './home.component.css',
-    imports: [FooterComponent]
+    imports: [FooterComponent, HeaderComponent]
 })
 export class HomeComponent {
   @Input() slides: string[] = [

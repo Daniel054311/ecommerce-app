@@ -7,13 +7,14 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { CLOTHING_PRODUCTS } from "../../db-data";
 import { ProductsService } from '../products.service';
 import { Router } from '@angular/router';
+import { HeaderComponent } from "../header/header.component";
 
 @Component({
-  selector: 'app-retail',
-  standalone: true,
-  templateUrl: './retail.component.html',
-  styleUrls: ['./retail.component.css'],
-  imports: [CommonModule, FooterComponent, NavbarComponent]
+    selector: 'app-retail',
+    standalone: true,
+    templateUrl: './retail.component.html',
+    styleUrls: ['./retail.component.css'],
+    imports: [CommonModule, FooterComponent, NavbarComponent, HeaderComponent]
 })
 export class RetailComponent implements OnInit {
 
