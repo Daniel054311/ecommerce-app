@@ -1,5 +1,5 @@
 <section>
-  <main class="flex flex-col gap-4 py-4 px-4 justify-center ">
+  <main class="flex flex-col gap-4 py-4 px-4 justify-center  ">
     <div
       class="flex flex-row gap-4 justify-center px-4 text-center bg-white py-2"
     >
@@ -47,8 +47,8 @@
         <button class="bg-white py-2 px-10 shadow-md flex items-center justify-center gap-2"><i class="text-blueColor text-2xl  fa fa-credit-card"></i><span class="text-blueColor ">Visa</span></button>
         <button class="flex items-center justify-center gap-2"><i class=" text-gray-300  fa fa-mobile-phone"></i> <span class="text-gray-300 ">Mobile money</span></button>
       </div>
-      <div class="flex justify-between gap-3   items-center">
-        <div class="w-4/6 grid grid-cols-2 py-5 gap-1 bg-white shadow-md">
+      <div class="flex md:flex-row flex-col justify-between gap-3   items-center">
+        <div class="md:w-4/6 grid grid-cols-2 py-5 gap-1 bg-white shadow-md">
           <div class="flex flex-col gap-4 py-4 px-4">
             <div class="flex flex-col px-2 justify-center shadow-md">
               <label class="text-gray-400" for="bank">Bank</label>
@@ -81,7 +81,7 @@
 
         </div>
 
-        <div class="w-1/3 bg-white flex flex-col py-5 px-5 shadow-md">
+        <div class="md:w-1/3 w-full bg-white flex flex-col py-5 px-5 shadow-md">
           <p class="font-bold text-gray-500">Summary</p>
           <div class="grid grid-cols-2 border-b border-gray-400">
             <p class="text-gray-300">Item</p><p class="text-gray-500">1</p>
@@ -97,8 +97,8 @@
       </div>
     </div>
 
-<div>
- <button class="bg-blueBg text-white ">Pay</button>
+<div class="relative top-20 left-[45%] right-[45%] ">
+ <button class="bg-blueBg text-white py-2 px-10 rounded-md ">Pay</button>
 </div>
 
   </main>
